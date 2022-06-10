@@ -1,21 +1,14 @@
 package it.academy;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.stream.Stream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class ReadFile {
 
-  public static void main(String[] args) throws IOException, URISyntaxException {
-    Path path = Paths.get(ReadFile.class.getClassLoader()
-        .getResource("readMe.txt").toURI());
-
-    try (Stream<String> lines = Files.lines(path)) {
-      lines.forEach(System.out::println);
+  public static void main(String[] args) throws IOException {
+    try (InputStream inputStream = ReadFile.class.getClassLoader().getResource("readMe.txt").openStream()) {
+      System.out.println(new String(inputStream.readAllBytes(), StandardCharsets.UTF_8));
     }
-
   }
 }

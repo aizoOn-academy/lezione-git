@@ -1,7 +1,5 @@
 package it.academy;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -11,8 +9,8 @@ import com.opencsv.bean.CsvToBeanBuilder;
 public class ReadCsv {
 
   public static void main(String[] args) throws IOException {
-    try (var inputStream = new InputStreamReader(new FileInputStream(ReadCsv.class.getClassLoader()
-        .getResource("readCsv.csv").getFile()))) {
+    try (var inputStream = new InputStreamReader(
+        ReadCsv.class.getClassLoader().getResource("readCsv.csv").openStream())) {
       CsvToBean<Persona> build = new CsvToBeanBuilder<Persona>(inputStream)
           .withType(Persona.class)
           .withSeparator(';')
