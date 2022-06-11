@@ -17,5 +17,7 @@ public class ReadFile {
       lines.forEach(System.out::println);
     }
 
+    System.out.println("Commit di Giovanni");
+
   }
 }
