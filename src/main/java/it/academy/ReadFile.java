@@ -15,7 +15,7 @@ public class ReadFile {
 
     try (Stream<String> lines = Files.lines(path)) {
       lines.forEach(System.out::println);
-      System.out.println("ciao");
+      System.out.println("ciao mondo 123");
     }
 
   }
